@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-6">
+            <form class="text-end" action="/dashboard/note/<%= note._id %>?_method=DELETE" method="POST">
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash"></i>
+                    Delete
+                </button>
+            </form>
+            <form  action="/dashboard/note/<%= note._id %>?_method=PUT" method="POST">
+                <div class="form-group mb-3">
+                    <label for="title">Title</label>
+                    <input name="title" type="text" value="<%= note.title %>" class="form-control" id="title" placeholder="Title">
+                    <% if (errors.title) { %>
+                        <p class="text-danger">
+                            <%= errors.title.message %>
+                        </p>
+                    <% } %>
+                </div>
+                  <div class="form-group mb-3">
+                    <label for="content">Content</label>
+                    <textarea name="content" placeholder="Content" class="form-control" id="content" rows="10">
+                        <%= note.content %>
+                    </textarea>
+                    <% if (errors.content) { %>
+                        <p class="text-danger">
+                            <%= errors.content.message %>
+                        </p>
+                    <% } %>  
+                </div>
+                  <button class="btn btn-primary">
+                    <i class="bi bi-pen"></i>
+                    Update
+                  </button>
+                  <a href="/dashboard" class="btn btn-dark">
+                    <i class="bi bi-arrow-left"></i>
+                    Back
+                  </a>
+            </form>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+            <img src="/img/human-2.svg" style="height: 500px;"/>
+        </div>
+    </div>
+</div>

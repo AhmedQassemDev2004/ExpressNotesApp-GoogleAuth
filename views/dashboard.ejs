@@ -1,0 +1,45 @@
+<div class="container my-3 ">
+    <div class="row mb-5">
+        <div class="row mb-3">
+            <div class="col mb-2">
+                <h2>Hey, <%= user.firstName %></h2>
+            </div>
+            <div class="col text-end">
+                <a class="btn btn-primary" href="/dashboard/add">
+                    <i class="bi bi-plus"></i>
+                    new note
+                </a>
+            </div>
+        </div>
+
+        <% if (notes.length>0) { %>
+        <div class="row">
+            <% for( let i = 0; i < notes.length; i++ ) { %>
+                <div class="col-md-3 p-2">
+                    <div class="card border-primary" >
+                        <div class="card-body">
+                          <a href="/dashboard/note/<%= notes[i]._id %>" class="card-title">
+                            <h5><%= notes[i].title %></h5>
+                          </a>
+                          <p class="card-text"><%= notes[i].content %>...</p>
+                        </div>
+                      </div>
+                </div>
+            <% } %>
+        </div>
+        <% } else {%>
+        <div class="row">
+            <div class="col-3">
+                <img src="/img/human.svg" />
+            </div>
+            <div class="col mt-md-4">
+                <h2>Okay..</h2>
+                <h4>Let's start with your first note</h4>
+                <a class="btn btn-primary" href="/dashboard/add">
+                    Create one
+                </a>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</div>
